@@ -1,8 +1,15 @@
-**********      MPESA E-RECEIPT GENERATOR   **********
+**********      MPESA E-RECEIPT GENERATOR for Android  **********
 
 The purpose of this system is to provide users with a system that is able to generate KRA compliant(eTIMS) receipts when a payment is made through Mpesa.
 
 Problem statement; businesses, especially SMEs such as salons struggle with generating, storing and tracking receipts for Mpesa payments. The traditional hand written receipts do not really meet compliance standards required by the KRA resulting in difficulty during tax audits.
+Gap; there not being a way of creating a proof of records for informal transactions such paying a business paying matatu fare to parcel goods. During tax audits KRA will often ask for a proof of the expense.
+
+Payment method (Cash / M-Pesa / Bank)
+Reference number (e.g., M-Pesa code, vehicle plate for matatu)
+Reason for payment (“Transport to client meeting”)
+signature/approval
+
 
 ~ Key features of a valid tax receipt ~ https://www.kra.go.ke/helping-tax-payers/faqs/electronic-tax-invoice
 PIN and Name of trader;
@@ -62,3 +69,15 @@ Work flow
 1. Validating and storing the transaction
 2. extracting key fields ((amount, receiver's phone no./name/acc no, date, transaction ID)) stored to a database
 3. creates pdf.
+
+Components
+1. Mpesa message reader (push)- reads mpesa sms and forwards them to the server. - android sms API
+   Listens for incoming SMS
+   permissions
+   Extracts content
+   Sends it via HTTP to your Django server
+   concern of battery consumption, security.
+
+2.Python Mpesa sms Parser - regex
+
+3. Python pdf receipt generator
