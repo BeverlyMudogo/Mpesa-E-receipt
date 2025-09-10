@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from MpesaReceipt.views import manual_sms_input
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('manual-sms/', manual_sms_input),
+     
 ]
