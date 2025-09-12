@@ -1,0 +1,6 @@
+<h2>Transaction Saved!</h2>
+<p>Transaction ID: {{ transaction.transaction_id }}</p>
+<p>Amount: Ksh {{ transaction.amount }}</p>
+<p>Recipient: {{ transaction.recipient }}</p>
+
+<a href="{% url 'download_receipt' transaction.id %}">Download PDF Receipt</a>

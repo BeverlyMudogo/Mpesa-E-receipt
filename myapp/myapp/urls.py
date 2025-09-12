@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MpesaReceipt.views import manual_sms_input
+from django.shortcuts import render
+from MpesaReceipt import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('manual-sms/', manual_sms_input),
+    path('manual-sms/', views.manual_sms_input, name='manual_sms_input'),
+    path("success/", lambda r: render(r, "myapp/success.html"), name="success"),
+    path("receipt/<int:transaction_id>/", views.download_receipt, name="download_receipt"),
      
 ]
